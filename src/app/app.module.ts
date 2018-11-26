@@ -35,7 +35,7 @@ import { InicioEmpresaComponent } from './empresa/inicio-empresa/inicio-empresa.
 
 const routes: Routes= [
 
-  {path: '', component: InicioComponent, canActivate: [AutenticacionService]},
+  {path: '', component: InicioComponent},
   {path: 'InicioEmpresa', component: InicioEmpresaComponent},
   {path: 'sabe', component: ProofComponent, canActivate:[CheckUserService]},
   {path: 'curriculum', component: CurriculumComponent},

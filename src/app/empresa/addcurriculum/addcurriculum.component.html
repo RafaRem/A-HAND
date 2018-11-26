@@ -1,0 +1,69 @@
+<app-empresaheader></app-empresaheader>
+
+
+
+   
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<div class="row justify-content-center">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset 2">
+   
+   <h2>Agregas Informacion del Curriculum Vitae</h2>
+    <form [formGroup]="curriculumForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label for="curp">CURP del empleado</label>
+                    <i class="fa fa-check-circle check" *ngIf="curriculumForm.controls.curp.valid"></i>
+                    <i class="fa fa-exclamation-circle uncheck" *ngIf="curriculumForm.controls.curp.invalid &&
+                    curriculumForm.controls.curp.touched"></i>
+                    <input type="text" class="form-control" id="curp" formControlName="curp">
+                    <p class="alert alert-danger" *ngIf="curriculumForm.controls.curp.invalid &&
+                    curriculumForm.controls.curp.touched">
+                            El campo CURP es obligatorio</p>
+                </div>
+                <div class="form-group">
+                        <label for="puesto">Puesto que desempeño</label>
+                        <i class="fa fa-check-circle check" *ngIf="curriculumForm.controls.puesto.valid"></i>
+                        <i class="fa fa-exclamation-circle uncheck" *ngIf="curriculumForm.controls.puesto.invalid &&
+                        curriculumForm.controls.puesto.touched"></i>
+                        <input type="text" class="form-control" id="puesto" formControlName="puesto">
+                        <p class="alert alert-danger" *ngIf="curriculumForm.controls.puesto.invalid &&
+                        curriculumForm.controls.puesto.touched">
+                              El campo Puesto es obligatorio</p>
+                </div>
+
+                <label for="fecha_l">Fecha en que laboro</label>
+                <br>
+        </div>
+      </div>
+      <div class="row">
+          
+          
+                <div class="col-md-3">
+                <div class="fechas">
+                  <label for="fecha_l"> De:</label>
+                  <input type="date" class="form-control" id="fecha_l" formControlName="fecha_l">
+                </div>
+                </div>
+              <div class="col-md-3">
+                  <div class="fechas">
+                     <label for="fecha_l">hasta:</label>
+                      <input type="date" class="form-control" id="fecha_f" formControlName="fecha_f">
+                    </div>
+          </div>
+      </div>
+      <br>
+      <br>
+      <br>
+
+      <button class="btn btn-primary" type="submit" (click)="EMP()" [disabled]="!curriculumForm.valid">Añadir Presupuesto</button>
+      <!--<p class="alert alert-danger" *ngIf="!curriculumForm.valid">
+        Por favor complete todos los campos
+      </p>-->
+      <pre>Valor del formulario: {{ curriculumForm.value | json }}</pre>
+      <pre>Status del formulario: {{ curriculumForm.status | json }}</pre>
+      <hr>
+      <pre>{{ curriculum | json }}</pre> 
+    </form>
+  </div>
+  </div>

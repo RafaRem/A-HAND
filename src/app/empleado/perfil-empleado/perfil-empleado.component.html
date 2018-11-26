@@ -1,0 +1,100 @@
+<app-empleadoheader></app-empleadoheader>
+<br>
+
+<br>
+
+<div class="col-md-12">
+    <div class="row align-items-center">
+     
+          <div class="col-md-3">
+            <img src="https://image.freepik.com/vector-gratis/feliz-hombre-negocios_1133-457.jpg" class="img-fluid rounded-circle" alt="">
+          </div>
+          <br>
+          <br>
+          <div class="col-md-9">
+          <div class="card text-white bg-primary mb-3" style="max-width: max-content; ">
+              <div class="card-header"><h2>Mis Datos</h2></div>
+              <div class="card-body">
+                <h3 class="card-title">Datos Generales</h3>
+                
+                
+                <div class="row">
+                <div class="col-md-6">
+                  <h5 class="card-title">Información personal</h5>
+                  <p class="card-text">Nombre: {{this.profiles.nombre}} </p>
+                  <p class="card-text">Sexo: {{this.profiles.sexo}} </p>
+                  <p class="card-text">Edad: 25 </p>
+                  </div>
+                <div class="col-md-6">
+                  <h5 class="card-title">Formas de contacto</h5>
+                  <p class="card-text">Correo Electronico: {{profiles.correo}} </p>
+                  <p class="card-text">Telefono: 6681241183</p>
+                  <p class="card-text">Dirección: Los Mochis, Sinaloa, colonia Jardines del bosque, calle LLuvia de oro #2066</p>
+                </div>
+                
+              </div>
+                
+
+
+              </div>
+            </div>
+            </div>
+        </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<div class="row justify-content-center">
+<div class="col-md-6">
+
+          <div class="card text-white bg-secondary md-9" >
+              <div class="card-header"><h2>Formación</h2></div>
+              <div class="card-body">
+                <h5 class="card-title">Estudios</h5>
+                <div class="row">
+                    <div class="col-md-9">
+                        <p class="card-text">Preparacion Academica: {{profiles.gestudio}}</p>
+                        <br>
+                        <p class="card-text">Escuela: {{profiles.uni}} </p>
+                        <br>
+                        <p class="card-text">Carrera Universitaria: {{profiles.titulo}}</p>
+                      </div>
+                  
+              </div>
+          </div>
+          </div>
+
+</div>
+</div>
+<br>
+<br>
+<div class="row justify-content-center">
+<div class="col-md-6">
+    
+
+  <div class="card text-center">
+    <div class="card-header">
+        <h2>Datos del Curriculum</h2>  
+    </div>
+    <div *ngFor="let ress of curri">
+    <div class="card-body">
+      <h5 class="card-title">Nombre de la emprersa: {{ress.empresa}}</h5>
+      <div class="row justify-content-md-center"></div>
+      <p class="card-text">
+        Puesto: {{ress.puesto}} <br>
+        Fecha de inicio: {{ress.fechaI}} <br>
+        Fecha de terminación: {{ress.fechaF}} <br>
+   
+      </p>
+      
+    </div>
+    <hr>
+</div>
+
+</div>
+<br>
+<br>
+</div>
+</div>

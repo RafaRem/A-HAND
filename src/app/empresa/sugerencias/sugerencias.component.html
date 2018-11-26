@@ -1,0 +1,149 @@
+<app-empresaheader></app-empresaheader>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Aviso</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Usted va a eliminar la solicitud del usuario {{nombre}}, con correo {{empleado}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)="eliminar()" data-dismiss="modal">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" style="color: black;">{{solicitud.nombre}} {{solicitud.app}} {{solicitud.apm}}</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          <div class="modal-body">
+            <h3>Información General</h3>
+            <div class="container-fluid border border-danger">              
+                <div class="row">
+                  <div class="col-sm-9">
+                      <h5>{{solicitud.nombre}} {{solicitud.app}} {{solicitud.apm}}</h5>
+                    <div class="row">
+                      <div class="col-md-auto">
+                       <div><h5>Direccion: calle {{solicitud.calle}}, {{solicitud.ciudad}}, {{solicitud.municipio}}, {{solicitud.estado}}</h5> </div> 
+                       <div><h5>Edad: {{solicitud.edad}}</h5></div> 
+                       <div><h5>Sexo: {{solicitud.sexo}}</h5></div> 
+                      </div>
+                      
+                    </div>
+                   <hr  class="justify-content-center" style="width: 300px;">
+                    
+                  </div>
+         
+           
+                </div>
+                
+              </div>
+
+             <br>
+
+              <h3>Escolaridad</h3>
+              <div class="container-fluid">              
+                  <div class="row border border-success">
+                    <div class="col-sm-9">
+                        
+                      <div class="row">
+                        <div class="col-md-auto">
+                            <div><h5>Ultimo Grado de Estudio: {{solicitud.gestudio}} </h5></div> 
+                          <div><h5>Titulo: {{solicitud.titulo}}</h5> </div> 
+                         <div><h5>Universida {{solicitud.uni}}</h5></div> 
+                         
+                        </div>
+                        
+                      </div>
+                    </div>
+                   
+                  </div>
+                </div>
+              <br>
+              <h3>Curriculum vitae</h3>
+              <div class="container-fluid">              
+                  <div class="row border border-primary">
+                    <div class="col-sm-9">
+                        
+                      <div class="row"  *ngFor="let trabajo of curriculum">
+                        <div class="col-md-auto">
+                          <div><h6>Nombre de la empresa: {{trabajo.empresa}}</h6> </div> 
+                         <div><h6>puesto ejercido: {{trabajo.puesto}}</h6></div> 
+                         <div><h6>Fecha en que inicio a trabajar: {{trabajo.fechaI}} al {{trabajo.fechaF}}</h6></div> 
+                         <hr>
+                        </div>
+                       
+                      </div>
+                    </div>
+                   
+                  </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Personas Que Cumplen Con El Perfil</h3> 
+    
+  
+ 
+  
+
+<div class="row">
+    <div class="col-md-2">
+    </div>
+  <div class="col-md-9">
+  <table class="table table-bordered table-striped tabla" style="margin-top: 40px;" >
+    <thead>
+      <tr class="filters">
+        <th>Nombre</th>
+        <th>Puesto</th>
+        <th>Edad</th>
+        <th>Grado de estudio</th>
+        <th>Sexo</th>
+        <th>Correo de Contacto</th>
+        <th>Eliminar Vacante</th>
+        <th>Ver detalles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vacante of dato">
+        <td >{{vacante.nombre}}</td>
+        <td>{{ vacante.puesto}}</td>
+        <td>{{ vacante.edad }}</td>
+        <td>{{vacante.gestudio}}</td>
+        <td>{{ vacante.sexo }}</td>
+        <td>{{vacante.correo}}</td>
+        <td >	
+          <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" (click)="pasarcorreo(vacante.nombre, vacante.correo)"> Eliminar </button></td>
+        <td><button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target=".bd-example-modal-lg" ><a class="button" (click)="detalles(vacante)" >Detalles del trabajador</a></button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+  <br> 
+  
+</div>
+</div>

@@ -1,0 +1,149 @@
+<app-empresaheader></app-empresaheader>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Aviso</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Usted va a eliminar la solicitud del usuario {{nombre}}, con correo {{empleado}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)="eliminar()" data-dismiss="modal">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+<br>
+<br>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" style="color: black;">{{solicitud.nombre}} {{solicitud.app}} {{solicitud.apm}}</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          <div class="modal-body">
+            <h3>Información General</h3>
+            <div class="container-fluid border border-danger">              
+                <div class="row">
+                  <div class="col-sm-9">
+                      <h5>{{solicitud.nombre}} {{solicitud.app}} {{solicitud.apm}}</h5>
+                    <div class="row">
+                      <div class="col-md-auto">
+                       <div><h5>Direccion: calle {{solicitud.calle}}, {{solicitud.ciudad}}, {{solicitud.municipio}}, {{solicitud.estado}}</h5> </div> 
+                       <div><h5>Edad: {{solicitud.edad}}</h5></div> 
+                       <div><h5>Sexo: {{solicitud.sexo}}</h5></div> 
+                      </div>
+                      
+                    </div>
+                   <hr  class="justify-content-center" style="width: 300px;">
+                    
+                  </div>
+         
+           
+                </div>
+                
+              </div>
+
+             <br>
+
+              <h3>Escolaridad</h3>
+              <div class="container-fluid">              
+                  <div class="row border border-success">
+                    <div class="col-sm-9">
+                        
+                      <div class="row">
+                        <div class="col-md-auto">
+                            <div><h5>Ultimo Grado de Estudio: {{solicitud.gestudio}} </h5></div> 
+                          <div><h5>Titulo: {{solicitud.titulo}}</h5> </div> 
+                         <div><h5>Universida {{solicitud.uni}}</h5></div> 
+                         
+                        </div>
+                        
+                      </div>
+                    </div>
+                   
+                  </div>
+                </div>
+              <br>
+              <h3>Curriculum vitae</h3>
+              <div class="container-fluid">              
+                  <div class="row border border-primary">
+                    <div class="col-sm-9">
+                        
+                      <div class="row"  *ngFor="let trabajo of curriculum">
+                        <div class="col-md-auto">
+                          <div><h6>Nombre de la empresa: {{trabajo.empresa}}</h6> </div> 
+                         <div><h6>puesto ejercido: {{trabajo.puesto}}</h6></div> 
+                         <div><h6>Fecha en que inicio a trabajar: {{trabajo.fechaI}} al {{trabajo.fechaF}}</h6></div> 
+                        </div>
+                        
+                      </div>
+                    </div>
+                   
+                  </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="row justify-content-md-center">
+<div class="col-xs-12 col-sm-10 col-md-9 col-sm-offset-1 col-md-offset 2">
+<h2>Solicitudes de empleo</h2>
+<table class="table table-bordered table-striped tabla" style="margin-top: 40px;" >
+  <thead>
+    <tr class="filters">
+      <th>Nombre</th>
+      <th>Puesto Solicitado</th>
+
+      <th>Correo Electronico</th>
+     
+      <th>Agendar Cita</th>
+      <th>Ver Perfil</th>
+      <th>Eliminar vacante</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let proveedor of curri">
+      <td>{{proveedor.nombre}}</td>
+      <td>{{proveedor.puesto}}</td>
+ 
+      <td><a href="mailto:{{ proveedor.email }}">{{ proveedor.correo}}</a></td>
+     
+      <td>	<!---outline- para hacer trasparente el boton-->
+          <a href="mailto:{{ proveedor.email }}"><button class="btn btn-warning my-2 my-sm-0" type="submit">Agendar</button></a> 
+      </td>
+      <td>	
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="detalles(proveedor)">Ver Curriculum</button>
+      </td>
+      <td>	<!---outline- para hacer trasparente el boton-->
+   <button class="btn btn-danger my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" (click)="pasarcorreo(proveedor.nombre, proveedor.correo)" >Eliminar vacante</button>
+    </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+<br>
+<br>
+<br>

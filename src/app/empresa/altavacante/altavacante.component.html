@@ -1,0 +1,134 @@
+<app-empresaheader></app-empresaheader>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<div class="container-fluid" >
+
+ <div class="row justify-content-md-center"  >       
+              
+
+<div class="col-md-6" >
+        <br>
+        <br>
+        <br>
+                <img src="../../../assets/img/diseno-fondo-negocios_1133-247.jpg" class="img-fluid rounded mx-auto d-block" alt="...">
+</div>
+                
+<div class="col-md-5"  >    
+ <h2>Añadir Nueva Vacante</h2>
+    <form [formGroup]="vacanteForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="puesto">Puesto</label>
+        <i class="fa fa-check-circle check" *ngIf="vacanteForm.controls.puesto.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="vacanteForm.controls.puesto.invalid &&
+                vacanteForm.controls.puesto.touched"></i>
+        <input type="text" class="form-control" id="puesto" formControlName="puesto">
+        <p class="alert alert-danger" *ngIf="vacanteForm.controls.puesto.invalid &&
+                vacanteForm.controls.puesto.touched">
+              El campo puesto es obligatorio</p>
+      </div>
+      <div class="form-group">
+        <label for="cantidad">Cantidad de Vancantes</label>
+        <i class="fa fa-check-circle check" *ngIf="vacanteForm.controls.cantidad.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="vacanteForm.controls.cantidad.invalid &&
+                vacanteForm.controls.cantidad.touched"></i>
+        <input type="number" class="form-control" id="cantidad" formControlName="cantidad">
+        <p class="alert alert-danger" *ngIf="vacanteForm.controls.cantidad.invalid &&
+                vacanteForm.controls.cantidad.touched">
+              El campo Cantidad es obligatorio</p>
+      </div>
+     
+     <div class="form-group">
+        <label for="sexo">Sexo</label>
+        <i class="fa fa-check-circle check" *ngIf="vacanteForm.controls.sexo.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="vacanteForm.controls.sexo.invalid &&
+                vacanteForm.controls.sexo.touched"></i>
+        <select class="form-control" id="sexo" formControlName="sexo">
+          <option value="">Seleccione...</option>
+          <option value="Indistinto">Indistinto</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Hombre">Hombre</option>
+        
+        </select>
+        <p class="alert alert-danger" *ngIf="vacanteForm.controls.sexo.invalid &&
+                vacanteForm.controls.sexo.touched">
+              El campo Sexo de IVA es obligatorio</p>
+      </div>
+      <div class="form-group">
+        <label for="salario">Salario quincenal</label>
+        <i class="fa fa-check-circle check" *ngIf="vacanteForm.controls.salario.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="vacanteForm.controls.salario.invalid &&
+                vacanteForm.controls.salario.touched"></i>
+        <input type="text" class="form-control" id="salario" formControlName="salario">
+        <p class="alert alert-danger" *ngIf="vacanteForm.controls.salario.invalid &&
+                vacanteForm.controls.salario.touched">
+              El campo Salario es obligatorio</p>
+      </div>
+      <div class="form-group">
+        <label for="experiencia">Experiencia Minima</label>
+        <i class="fa fa-check-circle check" *ngIf="vacanteForm.controls.experiencia.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="vacanteForm.controls.experiencia.invalid &&
+                vacanteForm.controls.experiencia.touched"></i>
+        <input type="number" class="form-control" id="experiencia" formControlName="experiencia">
+        <p class="alert alert-danger" *ngIf="vacanteForm.controls.experiencia.invalid &&
+                vacanteForm.controls.experiencia.touched">
+              El campo Experiencia es obligatorio</p>
+            </div>
+        <div class="form-group">
+          <label for="esc">Escolaridad</label>
+          <i class="fa fa-check-circle check" *ngIf="vacanteForm.controls.esc.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="vacanteForm.controls.esc.invalid &&
+                  vacanteForm.controls.esc.touched"></i>
+          <select class="form-control" id="esc" formControlName="esc">
+            <option value="">Seleccione...</option>
+            <option value="primaria">Primaria</option>
+            <option value="secundaria">Secundaria</option>
+            <option value="preparatoria">Preparatoria</option>
+            <option value="licenciatura">licenciatura</option>
+          </select>
+          <p class="alert alert-danger" *ngIf="vacanteForm.controls.esc.invalid &&
+                  vacanteForm.controls.esc.touched">
+                El campo Escolaridad de IVA es obligatorio</p>
+        </div>
+
+        <div class="form-group">
+          <label for="edad">Rango de edad</label>
+          <i class="fa fa-check-circle check" *ngIf="vacanteForm.controls.edad.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="vacanteForm.controls.edad.invalid &&
+                  vacanteForm.controls.edad.touched"></i>
+          <input type="text" class="form-control" id="edad" placeholder="edad minima - edad maxima" formControlName="edad">
+          <p class="alert alert-danger" *ngIf="vacanteForm.controls.edad.invalid &&
+                  vacanteForm.controls.edad.touched">
+                El campo edad es obligatorio</p>
+        </div>
+        <div class="form-group">
+          <label for="seguro">Cubren Seguro</label>
+          <i class="fa fa-check-circle check" *ngIf="vacanteForm.controls.seguro.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="vacanteForm.controls.seguro.invalid &&
+                  vacanteForm.controls.seguro.touched"></i>
+          <select class="form-control" id="seguro" formControlName="seguro">
+            <option value="">Seleccione...</option>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+           
+          
+          </select>
+          <p class="alert alert-danger" *ngIf="vacanteForm.controls.seguro.invalid &&
+                  vacanteForm.controls.seguro.touched">
+                El campo Seguro de IVA es obligatorio</p>
+        </div>
+    
+      <button class="btn btn-primary" type="submit"  (click)="EMP()">Añadir Vacante</button>
+      
+      <p class="alert alert-danger" *ngIf="!vacanteForm.valid">
+        Por favor complete todos los campos
+      </p>
+    <pre>Valor del formulario: {{ vacanteForm.value | json }}</pre>
+    <pre>Status del formulario: {{ vacanteForm.status | json }}</pre>
+    <hr>
+    <pre>{{ vacante | json }}</pre>
+    </form>
+</div>
+ </div>
+
+</div>

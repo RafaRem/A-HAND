@@ -1,0 +1,185 @@
+<app-empresaheader></app-empresaheader>
+<div class="col-xs-12 col-sm-10 col-md-12 col-sm-offset-1 col-md-offset-2">
+
+    
+  
+
+<div class="container col-md-8 ">
+<form [formGroup]="empresaForm" (ngSubmit)="onSubmit()"  #formEmpresa="ngForm">
+        <br>
+       <h1>Registrar Empresa
+      </h1>
+     <br>
+     <br>
+     
+      
+        <div class="row">
+        <div class="col-md-6">
+        <h3>Datos de la Empresa</h3>
+    <br>
+    <br>
+                  <!--Nombre-->
+      <div class="form-group">
+          <label for="nombre">Nombre de la Empresa*</label>
+          <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.nombre.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.nombre.invalid &&
+                  empresaForm.controls.nombre.touched"></i>
+          <input type="text" class="form-control" id="nombre"  placeholder="Nombre de la Empresa" formControlName="nombre">
+          <p class="alert alert-danger" *ngIf="empresaForm.controls.nombre.invalid &&
+                  empresaForm.controls.nombre.touched">
+                El campo Nombre es obligatorio</p>
+        </div>
+<!--correo-->
+    <div class="form-group">
+          <label for="correo">Correo electronico*</label>
+          <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.correo.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.correo.invalid &&
+                  empresaForm.controls.correo.touched"></i>
+          <input type="email" class="form-control" id="correo" (blur)="checar()"  placeholder="miempresa@calientemensaje.com" formControlName="correo">
+          
+          <p class="alert alert-danger" *ngIf="empresaForm.controls.correo.invalid &&
+                  empresaForm.controls.correo.touched"> 
+                El campo del correo electronico es obligatorio</p>
+      </div>
+      <!--Contraceña-->
+      <div class="form-group">
+        <label for="pass">Contraceña*</label>
+        <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.pass.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.pass.invalid &&
+                empresaForm.controls.pass.touched"></i>
+        <input type="text" class="form-control" id="pass" placeholder="**************" formControlName="pass">
+        <p class="alert alert-danger" *ngIf="empresaForm.controls.pass.invalid &&
+                empresaForm.controls.pass.touched">
+              El campo Contraceña es obligatorio</p>
+      </div>
+      <!--RFC-->
+      <div class="form-group">
+          <label for="rfc">RFC de la empresa*</label>
+          <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.rfc.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.rfc.invalid &&
+                  empresaForm.controls.rfc.touched"></i>
+          <input type="text" class="form-control" id="rfc" placeholder="MECH970126JD1" formControlName="rfc">
+          <p class="alert alert-danger" *ngIf="empresaForm.controls.rfc.invalid &&
+                  empresaForm.controls.rfc.touched">
+                El campo RFC es obligatorio</p>
+        </div>
+        <!--Razon social-->
+      <div class="form-group">
+          <label for="rs">Razon social de la empresa*</label>
+          <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.rs.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.rs.invalid &&
+                  empresaForm.controls.rs.touched"></i>
+          <input type="text" class="form-control" id="rs" placeholder="Razon social" formControlName="rs">
+          <p class="alert alert-danger" *ngIf="empresaForm.controls.rs.invalid &&
+                  empresaForm.controls.rs.touched">
+                El campo Razon social es obligatorio</p>
+        </div>
+        <!--Persona Contacto-->
+        <div class="form-group">
+            <label for="contacto">Nombre de la Persona contacto*</label>
+            <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.contacto.valid"></i>
+            <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.contacto.invalid &&
+                    empresaForm.controls.contacto.touched"></i>
+            <input type="text" class="form-control" id="contacto" placeholder="Pito Perez" formControlName="contacto">
+            <p class="alert alert-danger" *ngIf="empresaForm.controls.contacto.invalid &&empresaForm.controls.contacto.touched">
+                  El campo de la persona contacto es obligatorio</p>
+          </div>
+          <!--Descripcion-->
+          <div class="form-group">
+              <label for="descripcion">Descripcion de la empresa</label>
+  
+             <textarea rows="14" ng-model="descripcion" name="descripcion" id="descripcion" formControlName="descripcion" placeholder="Breve explicación de la empresa" class="form-control"></textarea>
+           
+            </div>
+
+            </div>
+            
+            
+                <div class="col-md-6">
+                    <h3>Diereccion de la Empresa</h3>
+                    <br>
+                    <br>
+                  
+                    <div class="form-group">
+                        <!--estado-->
+                         <label for="estado">Estado de la empresa*</label>
+                         
+                         <select class="form-control" id="estado" [(ngModel)]="estado"  (change)="capturar()" name="estado" formControlName="estado">
+                                     <option value="estado">Seleccione un estado</option>
+                                     <option *ngFor="let est of todos" >{{est}}</option>
+                         </select>
+                         
+                       </div>
+                       <!--Municipio-->
+                <div class="form-group">
+                        <label for="municipio">Nombre del Municipio*</label>
+                        <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.municipio.valid"></i>
+                        <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.municipio.invalid &&
+                                empresaForm.controls.municipio.touched"></i>
+                        <input type="text" class="form-control" id="municipio" placeholder="Municipio" formControlName="municipio">
+                        <p class="alert alert-danger" *ngIf="empresaForm.controls.municipio.invalid &&empresaForm.controls.municipio.touched">
+                        El campo del Municipio es obligatorio</p>
+                </div>
+                  <!--Ciudad-->
+                  <div class="form-group">
+                                <label for="ciudad">Nombre de la Ciudad*</label>
+                                <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.ciudad.valid"></i>
+                                <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.ciudad.invalid &&
+                                        empresaForm.controls.ciudad.touched"></i>
+                                <input type="text" class="form-control" id="ciudad" placeholder="Ciudad" formControlName="ciudad">
+                                <p class="alert alert-danger" *ngIf="empresaForm.controls.ciudad.invalid &&empresaForm.controls.ciudad.touched">
+                                El campo de La Ciudad es obligatorio</p>
+                </div>
+                  <!--Calle-->
+                  <div class="form-group">
+                                <label for="calle">Nombre del calle*</label>
+                                <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.calle.valid"></i>
+                                <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.calle.invalid &&
+                                        empresaForm.controls.calle.touched"></i>
+                                <input type="text" class="form-control" id="calle" placeholder="Calle" formControlName="calle">
+                                <p class="alert alert-danger" *ngIf="empresaForm.controls.calle.invalid &&empresaForm.controls.calle.touched">
+                                El campo del calle es obligatorio</p>
+                        </div>
+                         <!--Numero Exterior-->
+                  <div class="form-group">
+                                <label for="numext">Numero Extertio*</label>
+                                <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.numext.valid"></i>
+                                <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.numext.invalid &&
+                                        empresaForm.controls.numext.touched"></i>
+                                <div class="input-group mb-3">
+                                       <div class="input-group-prepend">
+                                          <span class="input-group-text" id="basic-addon1">#</span>
+                                     </div>
+                                     <input type="text" class="form-control" id="numext" placeholder="Numero Extertio" formControlName="numext">
+
+                                </div>
+                                <p class="alert alert-danger" *ngIf="empresaForm.controls.numext.invalid &&empresaForm.controls.numext.touched">
+                                El campo del Numero Extra es obligatorio*</p>
+                        </div>
+    <!--Numero Interior-->
+                        <div class="form-group">
+                                        <label for="numint">Numero Extertio*</label>
+                                       
+                                   
+                                             <input type="text" class="form-control" id="numint" placeholder="Numero Interior" formControlName="numint">
+        
+                                </div>
+                       <button class="btn btn-primary" type="submit" (click)="EMP()" [disabled]="!this.empresaForm.valid">Registrar Empresa</button>
+
+                </div>
+          </div>
+        
+
+</form>
+</div>          
+
+
+  
+  <pre>Valor del formulario: {{ empresaForm.value | json }}</pre>
+    <pre>Status del formulario: {{ empresaForm.status | json }}</pre>
+    <hr>
+    <pre>{{ empresa | json }}</pre>
+
+  
+</div>
+

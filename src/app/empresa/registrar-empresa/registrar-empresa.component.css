@@ -1,0 +1,22 @@
+#fullPage{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+   position: relative;
+}
+
+.container h1{
+    margin-left: 20% !important;
+
+ }
+
+ .container form .row  .btn{
+   color: white !important;
+
+ }
+.mediador{
+    margin-left: 25%;
+}

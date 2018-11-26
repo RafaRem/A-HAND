@@ -1,0 +1,23 @@
+<app-empresaheader></app-empresaheader>
+<body>
+<h3>Solicitudes de empleo</h3>
+<table class="table table-bordered table-striped tabla" style="margin-top: 40px;" >
+  <thead>
+    <tr class="filters">
+      <th>Nombre</th>
+      <th>Correo Electronico</th>
+      <th>Telefono</th>
+      <th>Agendar Cita</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let proveedor of proveedores">
+      <td>{{proveedor.nombre}}</td>
+      <td><a href="mailto:{{ proveedor.email }}">{{ proveedor.email}}</a></td>
+      <td>{{ proveedor.telefono }}</td>
+      <td>	
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Agendar</button></td>
+    </tr>
+  </tbody>
+</table>
+</body>

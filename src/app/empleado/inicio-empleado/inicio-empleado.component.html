@@ -1,0 +1,65 @@
+<app-empleadoheader></app-empleadoheader>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Aviso</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Usted esta por enviar su solicitud, que incluye Toda su informacion de perfil a la Empresa: {{empresanombre}}, 
+          ¿aun desea hacerlo?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="enviarSolicitud()" data-dismiss="modal">Enviar Solicitud</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="row justify-content-md-center">
+  <div class="col-md-9">
+    <div *ngFor="let ress of res">
+      <br>
+      <br>
+      <br>
+      <div class="card text-center">
+        <div class="card-header">
+           Vacante disponible en: {{ress.puesto}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Nombre de la Empresa: {{ress.nombre}}</h5>
+          <div class="row justify-content-md-center"></div>
+          <p class="card-text">Puesto: {{ress.puesto}} <br>
+            Experiencia minima en años: {{ress.experiencia}} <br>
+            Edad Requerida: {{ress.edad}} <br>
+            Escolaridad: {{ress.esc}} <br>
+            Sexo: {{ress.sexo}} <br>
+            Salario: {{ress.salario}} <br>
+            Ofrece Seguro: {{ress.seguro}} <br>
+          </p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="detalle(ress.correo, ress.nombre, ress.puesto)">
+              Enviar Solicitud
+            </button>
+        </div>
+        <div class="card-footer text-muted pie">
+         2 days ago
+       </div>
+    </div>
+    <br>
+    <br>
+    </div>
+   
+  </div>
+</div>
+<br>
+<br>
+<br>

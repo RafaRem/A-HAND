@@ -1,0 +1,29 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+.border {
+    background-color: white;
+    width: 400px;
+    margin: 22% 22%;
+    margin-left: 2%;
+    font-size: 16px;
+  }
+
+  .curriculums {
+    background-color: red;
+    width: 400px;
+    margin: 22% 22%;
+    margin-left: 30%;
+    font-size: 16px;
+  }
+  .labl{
+    margin-left: 10%; 
+  }
+  .btn{
+      margin-left: 80%;   
+     margin-top: 3px;
+  }
+
+  .row a {
+    color: white !important;
+    margin-left: 60%;  
+  }

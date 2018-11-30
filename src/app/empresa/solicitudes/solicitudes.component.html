@@ -106,9 +106,10 @@
 
 
 
-  <div class="row justify-content-md-center">
+<div class="row justify-content-md-center">
 <div class="col-xs-12 col-sm-10 col-md-9 col-sm-offset-1 col-md-offset 2">
 <h2>Solicitudes de empleo</h2>
+<div class="table-responsive">
 <table class="table table-bordered table-striped tabla" style="margin-top: 40px;" >
   <thead>
     <tr class="filters">
@@ -127,10 +128,10 @@
       <td>{{proveedor.nombre}}</td>
       <td>{{proveedor.puesto}}</td>
  
-      <td><a href="mailto:{{ proveedor.email }}">{{ proveedor.correo}}</a></td>
+      <td><a href="mailto:{{ proveedor.correo }}">{{ proveedor.correo}}</a></td>
      
       <td>	<!---outline- para hacer trasparente el boton-->
-          <a href="mailto:{{ proveedor.email }}"><button class="btn btn-warning my-2 my-sm-0" type="submit">Agendar</button></a> 
+          <a href="mailto:{{ proveedor.correo }}"><button class="btn btn-warning my-2 my-sm-0" type="submit">Agendar</button></a> 
       </td>
       <td>	
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="detalles(proveedor)">Ver Curriculum</button>
@@ -141,6 +142,7 @@
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 
 </div>

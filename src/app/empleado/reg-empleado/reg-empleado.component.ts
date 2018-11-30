@@ -17,6 +17,8 @@ export class RegEmpleadoComponent implements OnInit {
   cpassword: string;
   resul: boolean = true;
   valor: boolean;
+  pass;
+  contra: boolean;
 
   todos: string[] =[ 'Aguascalientes', 'Chihuahua','Baja California', 'Baja california sur',
   'Sonora', 'Sinaloa', 'Nayarit', 'Jalisco', 'Colima', 'Guerrero',
@@ -49,6 +51,7 @@ export class RegEmpleadoComponent implements OnInit {
       numext: ['', Validators.required],
       numint: ['', Validators.required],
       estado: ['', Validators.required],
+      sexo: ['', Validators.required],
       edad: ['', Validators.required],
 
      
@@ -94,6 +97,7 @@ export class RegEmpleadoComponent implements OnInit {
       numext: this.empleadoForm.get('numext').value,
       numint: this.empleadoForm.get('numint').value,
       edad: this.empleadoForm.get('edad').value,
+      sexo: this.empleadoForm.get('sexo').value,
       rol: "empleado"
      
      
@@ -105,8 +109,10 @@ export class RegEmpleadoComponent implements OnInit {
 
   EMP(){
     this.valor = this.ValidateEmail(this.empleadoForm.get('correo').value);
+ 
+   
     console.log(this.valor)
-     if (this.valor == true){
+     if (this.valor == true) {
       console.log(this.valor)
     this.empleado = this.saveEmpleado();
     localStorage.setItem("empleado", JSON.stringify(this.empleado));
@@ -114,7 +120,7 @@ export class RegEmpleadoComponent implements OnInit {
     this.router.navigateByUrl('/curriculum');
   }
     else {
-      alert('El correo no es valido, Favor de corregir')
+      alert('El correo y/o contraseña no es valido , Favor de corregir')
     }
 
   }
@@ -131,6 +137,7 @@ export class RegEmpleadoComponent implements OnInit {
     }
   }
 
+ 
   ValidateEmail(email: String) {
     if (/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/.test(email.toString())) {
       return (true);

@@ -11,7 +11,7 @@
       </div>
       <div class="modal-body">
         <!--Puesto-->
-        <form [formGroup]="vacanteForm" (ngSubmit)="onSubmit()"> 
+        <form> 
         <div class="row">
 
       <div class="col-md-6 border border-white"  style=" color: black;"> <form>
@@ -27,7 +27,7 @@
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Cantidad de vacantes:</label>
              <!--Idiomas"-->
-            <input type="text" class="form-control" name="midioma" [(ngModel)]="modalidioma" value={{vac.cantidad}} disabled>
+            <input type="text" class="form-control" name="midioma" value={{vac.cantidad}} disabled>
           </div>
         </form>
       </div>
@@ -41,7 +41,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
                       </div>
-                    <input type="number" class="form-control" name="msalario" [(ngModel)]="modalsalario" value={{vac.salario}} disabled >
+                    <input type="number" class="form-control" name="msalario"  value={{vac.salario}} disabled >
                     <div class="input-group-append">
                       <span class="input-group-text">MXN</span>
                     </div>
@@ -55,7 +55,7 @@
           <label for="recipient-name" class="col-form-label">Experiencia minima:  </label>
            <!--Experiencia minima"-->
            <div class="input-group mb-3">
-              <input type="number" class="form-control" name="mexperiencia" [(ngModel)]="mexperiencia"  value={{vac.experiencia}} id="mexperiencia" formControlName="mexperiencia" disabled>
+              <input type="number" class="form-control" name="mexperiencia"  value={{vac.experiencia}} id="mexperiencia" formControlName="mexperiencia" disabled>
               <div class="input-group-append">
                 <span class="input-group-text">Años</span>
               </div>
@@ -70,7 +70,7 @@
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Sexo Solicitado:</label>
                  <!--Sexo-->
-                <input type="text" class="form-control" name="msexo" [(ngModel)]="modalsexo" value={{vac.sexo}} disabled >
+                <input type="text" class="form-control" name="msexo"  value={{vac.sexo}} disabled >
               </div>
             </form>
      </div>
@@ -79,7 +79,7 @@
           <label for="recipient-name" class="col-form-label">Rango de edad </label>
            <!--Horas de Jornada-->
            <div class="input-group mb-3">
-              <input type="text" class="form-control" name="maños" [(ngModel)]="modalhoras" value={{vac.edad}}  disabled >
+              <input type="text" class="form-control" name="maños"  value={{vac.edad}}  disabled >
               <div class="input-group-append">
                 <span class="input-group-text">Años</span>
               </div>
@@ -94,7 +94,7 @@
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Escolaridad Minima</label>
                  <!--Horarios-->
-                <input type="text" class="form-control" name="mhorarios" [(ngModel)]="modalhorarios" value={{vac.esc}} disabled >
+                <input type="text" class="form-control" name="mhorarios" value={{vac.esc}} disabled >
               </div>
             </form>
      </div>
@@ -102,7 +102,7 @@
         <div class="form-group">
           <label for="recipient-name" class="col-form-label">Cubre seguro</label>
            <!--Extra-->
-           <input type="text" class="form-control" name="mseguro" [(ngModel)]="modalseguro" value={{vac.seguro}} disabled >
+           <input type="text" class="form-control" name="mseguro"  value={{vac.seguro}} disabled >
              
         </div>
       </form> 
@@ -146,7 +146,7 @@
  <div class="row justify-content-md-center">
  <div class="col-md-9">
   <h3>Mis Solicitudes</h3>
- 
+ <div class="table-responsive">
   <table class="table table-bordered table-striped tabla" style="margin-top: 40px;" >
     <thead class="thead-dark">
       <tr class="filters">
@@ -171,7 +171,7 @@
       </tr>
     </tbody>
   </table>
- 
+</div>
 </div>
 </div>
 

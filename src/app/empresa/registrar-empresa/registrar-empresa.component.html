@@ -1,4 +1,4 @@
-<app-empresaheader></app-empresaheader>
+<app-header></app-header>
 <div class="col-xs-12 col-sm-10 col-md-12 col-sm-offset-1 col-md-offset-2">
 
     
@@ -47,10 +47,10 @@
         <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.pass.valid"></i>
         <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.pass.invalid &&
                 empresaForm.controls.pass.touched"></i>
-        <input type="text" class="form-control" id="pass" placeholder="**************" formControlName="pass">
-        <p class="alert alert-danger" *ngIf="empresaForm.controls.pass.invalid &&
+        <input type="text" class="form-control" id="pass" pattern="(?=.*[a-z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,15}" placeholder="**************" formControlName="pass">
+        <ul class="alert alert-danger" *ngIf="empresaForm.controls.pass.invalid &&
                 empresaForm.controls.pass.touched">
-              El campo Contraceña es obligatorio</p>
+                La contraseña es invalida favor de corregir debe contener: <li>-Al menos una minuscula  </li> <li>-Al menos un numero </li> <li>-contenero de 8 a 15 caracteres</li> </ul>
       </div>
       <!--RFC-->
       <div class="form-group">
@@ -175,10 +175,7 @@
 
 
   
-  <pre>Valor del formulario: {{ empresaForm.value | json }}</pre>
-    <pre>Status del formulario: {{ empresaForm.status | json }}</pre>
-    <hr>
-    <pre>{{ empresa | json }}</pre>
+ 
 
   
 </div>

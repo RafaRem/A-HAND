@@ -32,7 +32,7 @@
         <i class="fa fa-check-circle check" *ngIf="vacanteForm.controls.cantidad.valid"></i>
         <i class="fa fa-exclamation-circle uncheck" *ngIf="vacanteForm.controls.cantidad.invalid &&
                 vacanteForm.controls.cantidad.touched"></i>
-        <input type="number" class="form-control" id="cantidad" formControlName="cantidad">
+        <input type="number" class="form-control" id="cantidad" pattern="([1-9]{1})" formControlName="cantidad">
         <p class="alert alert-danger" *ngIf="vacanteForm.controls.cantidad.invalid &&
                 vacanteForm.controls.cantidad.touched">
               El campo Cantidad es obligatorio</p>
@@ -69,7 +69,7 @@
         <i class="fa fa-check-circle check" *ngIf="vacanteForm.controls.experiencia.valid"></i>
         <i class="fa fa-exclamation-circle uncheck" *ngIf="vacanteForm.controls.experiencia.invalid &&
                 vacanteForm.controls.experiencia.touched"></i>
-        <input type="number" class="form-control" id="experiencia" formControlName="experiencia">
+        <input type="number" class="form-control" id="experiencia" pattern="([0-9]{1})" formControlName="experiencia">
         <p class="alert alert-danger" *ngIf="vacanteForm.controls.experiencia.invalid &&
                 vacanteForm.controls.experiencia.touched">
               El campo Experiencia es obligatorio</p>
@@ -96,7 +96,7 @@
           <i class="fa fa-check-circle check" *ngIf="vacanteForm.controls.edad.valid"></i>
           <i class="fa fa-exclamation-circle uncheck" *ngIf="vacanteForm.controls.edad.invalid &&
                   vacanteForm.controls.edad.touched"></i>
-          <input type="text" class="form-control" id="edad" placeholder="edad minima - edad maxima" formControlName="edad">
+          <input type="text" class="form-control" id="edad" pattern="([1-9]{1})([0-9]{1})(-)([1-9]{1})([0-9]{1})" placeholder="edad minima - edad maxima" formControlName="edad">
           <p class="alert alert-danger" *ngIf="vacanteForm.controls.edad.invalid &&
                   vacanteForm.controls.edad.touched">
                 El campo edad es obligatorio</p>
@@ -118,15 +118,12 @@
                 El campo Seguro de IVA es obligatorio</p>
         </div>
     
-      <button class="btn btn-primary" type="submit"  (click)="EMP()">Añadir Vacante</button>
+      <button class="btn btn-primary" type="submit"  (click)="EMP()" [disabled]="!this.vacanteForm.valid">Añadir Vacante</button>
       
       <p class="alert alert-danger" *ngIf="!vacanteForm.valid">
         Por favor complete todos los campos
       </p>
-    <pre>Valor del formulario: {{ vacanteForm.value | json }}</pre>
-    <pre>Status del formulario: {{ vacanteForm.status | json }}</pre>
-    <hr>
-    <pre>{{ vacante | json }}</pre>
+    
     </form>
 </div>
  </div>

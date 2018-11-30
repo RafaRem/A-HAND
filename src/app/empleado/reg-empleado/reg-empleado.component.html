@@ -48,27 +48,37 @@
                                                                 <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.edad.valid"></i>
                                                                 <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.edad.invalid &&
                                                                         empleadoForm.controls.edad.touched"></i>
-                                                                <input type="number" class="form-control" id="edad"  placeholder="Edad" formControlName="edad">
+                                                                <input type="number" class="form-control" id="edad" pattern="([1-9]{1})([0-9]{1})" placeholder="Edad" formControlName="edad">
                                                                 <p class="alert alert-danger" *ngIf="empleadoForm.controls.edad.invalid &&
                                                                         empleadoForm.controls.edad.touched">
                                                                         El campo Edad es obligatorio</p>
                                                                 </div>
+                                                 <div class="form-group">
+                                        <!--estado-->
+                                                        <label for="sexo">Sexo*</label>
+                                                
+                                                        <select class="form-control" id="sexo" formControlName="sexo">
+                                                        <option value="Hombre">Hombre</option>
+                                                        <option value="Mujer">Mujer</option>
+                                                        </select>
+                                                                                 
+                                                 </div>   
                                                 <div class="form-group">
                                                         <label for="curp">CURP*</label>
                                                         <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.curp.valid"></i>
                                                         <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.curp.invalid &&
                                                                 empleadoForm.controls.curp.touched"></i>
-                                                        <input type="text" class="form-control" id="curp" placeholder="CURP" formControlName="curp">
+                                                        <input type="text" class="form-control" id="curp" pattern="([A-Z]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM](AS|BC|BS|CC|CL|CM|CS|CH|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[A-Z]{3}[0-9A-Z]\d)" placeholder="CURP" formControlName="curp">
                                                         <p class="alert alert-danger" *ngIf="empleadoForm.controls.curp.invalid &&
                                                                 empleadoForm.controls.curp.touched">
-                                                                La curp debe de contener 18 letras </p>
+                                                                La curp no es válida </p>
                                                 </div>
                                                 <div class="form-group">
                                                                 <label for="telefono">Telefono de contacto*</label>
                                                                 <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.telefono.valid"></i>
                                                                 <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.telefono.invalid &&
                                                                         empleadoForm.controls.telefono.touched"></i>
-                                                                <input type="tel" class="form-control" id="telefono"  placeholder="668-1241-183" formControlName="telefono">
+                                                                <input type="tel" class="form-control" id="telefono" pattern="([0-9]{10})" placeholder="6681241183" formControlName="telefono">
                                                                 
                                                                 <p class="alert alert-danger" *ngIf="empleadoForm.controls.telefono.invalid &&
                                                                         empleadoForm.controls.telefono.touched">
@@ -86,15 +96,15 @@
                                                                 Su correo electronico no es valido porfavor verifique</p>
                                                 </div>
                                                 <div class="form-group">
-                                                        <label for="pass">Contraceña*</label>
+                                                        <label for="pass">Contraseña*  (debe contener mas de 8 caracteres)</label>
                                                         <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.pass.valid"></i>
                                                         <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.pass.invalid &&
                                                                 empleadoForm.controls.pass.touched"></i>
-                                                        <input type="password" class="form-control" id="pass"  placeholder="Contraceña" formControlName="pass">
+                                                        <input type="text" class="form-control" id="pass" pattern="(?=.*[a-z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,15}" placeholder="Contraseña" formControlName="pass">
                                                         
-                                                        <p class="alert alert-danger" *ngIf="empleadoForm.controls.pass.invalid &&
+                                                        <ul class="alert alert-danger" *ngIf="empleadoForm.controls.pass.invalid &&
                                                                 empleadoForm.controls.pass.touched">
-                                                        Su contraceña no es valida ingrese una nuevamente</p>
+                                                               La contraseña es invalida favor de corregir debe contener: <li>-Al menos una minuscula  </li> <li>-Al menos un numero </li> <li>-contenero de 8 a 15 caracteres</li> </ul>
                                                 </div>
                                            <h2>Dirección</h2>
 
@@ -106,7 +116,7 @@
                                 <!--estado-->
                                          <label for="estado">Estado de la empresa*</label>
                                  
-                                         <select class="form-control" id="estado" [(ngModel)]="estado"   formControlName="estado">
+                                         <select class="form-control" id="estado" formControlName="estado">
                                              <option value="estado">Seleccione un estado</option>
                                              <option *ngFor="let est of todos" >{{est}}</option>
                                          </select>
@@ -143,7 +153,7 @@
                                                         </div>
                                                          <!--Numero Exterior-->
                                                   <div class="form-group">
-                                                                <label for="numext">Numero Extertio*</label>
+                                                                <label for="numext">Numero Exterior*</label>
                                                                 <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.numext.valid"></i>
                                                                 <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.numext.invalid &&
                                                                         empleadoForm.controls.numext.touched"></i>
@@ -151,7 +161,7 @@
                                                                        <div class="input-group-prepend">
                                                                           <span class="input-group-text" id="basic-addon1">#</span>
                                                                      </div>
-                                                                     <input type="text" class="form-control" id="numext" placeholder="Numero Extertio" formControlName="numext">
+                                                                     <input type="text" class="form-control" id="numext" placeholder="Numero Exterior" formControlName="numext">
                                                                      <p class="alert alert-danger" *ngIf="empleadoForm.controls.numext.invalid && empleadoForm.controls.numext.touched">
                                                                         El campo del Numero Extra es obligatorio</p>
                                                                 
@@ -165,12 +175,6 @@
                                                         </div>
                                         </form>
                
-                        <pre>Valor del formulario: {{ empleadoForm.value | json }}</pre>
-                        <pre>Status del formulario: {{ empleadoForm.status | json }}</pre>
-                  
-                        
-                        
-                        <pre>{{ empleado | json }}</pre>
                         <br>
                         <br>
                         <br>                        
@@ -193,7 +197,7 @@
                                 <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.gestudio.invalid &&
                                         empleadoForm.controls.gestudio.touched"></i>
       
-                                <select class="form-control" id="gestudio" [(ngModel)]="gestudio"  name="gestudio" formControlName="gestudio">
+                                <select class="form-control" id="gestudio"   formControlName="gestudio">
                                                                      <option value="">Seleccione un su grado de estudio</option>
                                                                      <option value="Secundaria">Secundaria</option>
                                                                      <option value="Preparatoria">Preparatoria</option>
@@ -224,7 +228,7 @@
                         
                         <p class="alert alert-danger" *ngIf="empleadoForm.controls.uni.invalid &&
                                 empleadoForm.controls.uni.touched">
-                        Su contraceña no es valida ingrese una nuevamente</p>
+                        Su Intituto no es valida ingrese una nuevamente</p>
                 
                         <button type="button" class="btn btn-primary float-md-right" (click)="EMP()" [disabled]="!this.empleadoForm.valid">Continuar</button>
                
@@ -232,7 +236,9 @@
                 </div>
         </form>
              
-               <!-- <img src="../../../assets/img/reg_emp.jpg" class="rounded mx-auto d-block" alt="...">-->
+               
+        
+        <!-- <img src="../../../assets/img/reg_emp.jpg" class="rounded mx-auto d-block" alt="...">-->
                <!-- <div class="col-md-5">
                                 
                     

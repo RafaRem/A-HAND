@@ -100,14 +100,18 @@ export class LoginComponent implements OnInit {
     }
     
     soypendejo(){
-      var auth = firebase.auth();
-      var emailAddress = this.email;
-
-      auth.sendPasswordResetEmail(emailAddress).then(function() {
-        alert("Su contraseña ha sido restablecia y enviada a su correo, en caso de no estar en los mesajes normales favor de revizar los correos no deceados")
-      }).catch(function(error) {
-        alert("No se pudo restablecer su contraseña, lo sentimos")
-    });}
+      if (this.email == ""){
+        alert("Por Favor ingrese un correo valido, en el campo correspondiente");
+      }else{var auth = firebase.auth();
+        var emailAddress = this.email;
+  
+        auth.sendPasswordResetEmail(emailAddress).then(function() {
+          alert("Su contraseña ha sido restablecia y enviada a su correo, en caso de no estar en los mesajes normales favor de revizar los correos no deceados")
+        }).catch(function(error) {
+          alert("No se pudo restablecer su contraseña, lo sentimos")
+      });}
+    }
+      
       
    
 

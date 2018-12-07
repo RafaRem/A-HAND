@@ -117,7 +117,49 @@
                   vacanteForm.controls.seguro.touched">
                 El campo Seguro de IVA es obligatorio</p>
         </div>
-    
+        <div class="form-group">
+                        <label for="habilidades"><h3>Habilidades</h3> </label>
+                        <br>
+                              <div class="custom-control custom-checkbox mr-sm-2">
+                                <input type="checkbox" (change)="check1($event)" value="angular" class="custom-control-input" id="equipo">
+                                <label class="custom-control-label" for="equipo">Trabano en equipo</label>
+                              </div>
+                              <div class="custom-control custom-checkbox mr-sm-2">
+                                <input type="checkbox" (change)="check2($event)" value="resproblemas" class="custom-control-input" id="resproblemas">
+                                <label class="custom-control-label" for="resproblemas">Resolución de problemas</label>
+                              </div>
+                              <div class="custom-control custom-checkbox mr-sm-2">
+                                <input type="checkbox" (change)="check3($event)" class="custom-control-input" id="comunicacion">
+                                <label class="custom-control-label" for="comunicacion">Comunicación eficaz</label>
+                              </div>
+                              <div class="custom-control custom-checkbox mr-sm-2">
+                                <input type="checkbox" (change)="check4($event)" class="custom-control-input" id="organizacion">
+                                <label class="custom-control-label" for="organizacion">Organización</label>
+                              </div>
+                              <div class="custom-control custom-checkbox mr-sm-2">
+                                  <input type="checkbox" (change)="check5($event)" class="custom-control-input" id="analisis">
+                                  <label class="custom-control-label" for="analisis">Análisis y procesamiento de información</label>
+                              </div>
+                              <div class="custom-control custom-checkbox mr-sm-2">
+                                <input type="checkbox" (change)="check6($event)" class="custom-control-input" id="conocimientos">
+                                <label class="custom-control-label" for="conocimientos"> Conocimientos técnicos relacionados con el trabajo</label>
+                              </div>
+                              <div class="custom-control custom-checkbox mr-sm-2">
+                                  <input type="checkbox" (change)="check7($event)" class="custom-control-input" id="manejo">
+                                  <label class="custom-control-label" for="manejo">Manejo de los programas de software</label>
+                              </div>
+                              <div class="custom-control custom-checkbox mr-sm-2">
+                                  <input type="checkbox" (change)="check8($event)" class="custom-control-input" id="edicion">
+                                  <label class="custom-control-label" for="edicion">Edición y redacción de informes</label>
+                              </div>
+                              <div class="custom-control custom-checkbox mr-sm-2">
+                                  <input type="checkbox" (change)="check9($event)" class="custom-control-input" id="marketing">
+                                  <label class="custom-control-label" for="marketing">Venta y marketing</label>
+                              </div>
+                              <button class="btn btn-primary" type="submit"  (click)="prueba()">Añadir Vacante</button>
+      
+                    </div>
+                    
       <button class="btn btn-primary" type="submit"  (click)="EMP()" [disabled]="!this.vacanteForm.valid">Añadir Vacante</button>
       
       <p class="alert alert-danger" *ngIf="!vacanteForm.valid">

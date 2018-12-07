@@ -13,10 +13,10 @@
 			</li>
 			<li class="itemd nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Vacantes
+					Vacantes <span class="badge badge-pill badge-danger" *ngIf="dato.length;" style="color:red">.</span>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="misSolicitudes">Mis solicitudes</a>			
+					<a class="dropdown-item" href="misSolicitudes">Mis solicitudes  <span class="badge badge-pill badge-danger" *ngIf="dato.length;" style="color:white">{{dato.length}}</span> </a>			
 				</div>
 			</li>
 			<li class="nav-item">

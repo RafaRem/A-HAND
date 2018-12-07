@@ -178,28 +178,34 @@
 <div class="row justify-content-center">
 <div class="col-md-6">
     
-
-  <div class="card text-center">
-    <div class="card-header">
-        <h2>Datos del Curriculum</h2>  
-    </div>
-    <div *ngFor="let ress of curri">
-    <div class="card-body">
-      <h5 class="card-title">Nombre de la emprersa: {{ress.empresa}}</h5>
-      <div class="row justify-content-md-center"></div>
-      <p class="card-text">
-        Puesto: {{ress.puesto}} <br>
-        Fecha de inicio: {{ress.fechaI}} <br>
-        Fecha de terminación: {{ress.fechaF}} <br>
-   
-      </p>
+    <mat-accordion>
+        <div *ngFor="let ress of curri">
+        <mat-expansion-panel  class="modal-header">
+          <mat-expansion-panel-header class="card-header" ><div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/empresa.png" alt=""></div>
+            &nbsp; &nbsp; <h3>Nombre de la emprersa: {{ress.empresa}}</h3>
+          </mat-expansion-panel-header >
+          
+              <div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/job.png" alt=""> &nbsp; &nbsp; Puesto: {{ress.puesto}} </div>
+              
+              <div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/enter.png" alt=""> &nbsp; &nbsp; Fecha de inicio: {{ress.fechaI}}</div>
+              
+              <div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/exit.png" alt=""> &nbsp; &nbsp; Fecha de terminación: {{ress.fechaF}}</div>
+             
+              <div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/hastag.png" alt=""> &nbsp; &nbsp; Descripcion de su labor: <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{ress.descripcion}}</div>
+             
+         
+          
       
-    </div>
-    <hr>
-</div>
+        </mat-expansion-panel>
+        </div>
+        
+      
+      </mat-accordion>
+  
 
-</div>
 <br>
 <br>
+
+
 </div>
 </div>

@@ -12,9 +12,52 @@
       <div class="modal-body">
         Usted desea continuar y registrar de esta manera su curriculum
       </div>
+      <div class="row justify-content-md-center">
+      <div class="form-group">
+       
+          <label for="habilidades"> <h3>Habilidades</h3> </label>
+          <br>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                  <input type="checkbox" (change)="check1($event)" value="angular" class="custom-control-input" id="equipo">
+                  <label class="custom-control-label" for="equipo">Trabano en equipo</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                  <input type="checkbox" (change)="check2($event)" value="resproblemas" class="custom-control-input" id="resproblemas">
+                  <label class="custom-control-label" for="resproblemas">Resolución de problemas</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                  <input type="checkbox" (change)="check3($event)" class="custom-control-input" id="comunicacion">
+                  <label class="custom-control-label" for="comunicacion">Comunicación eficaz</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                  <input type="checkbox" (change)="check4($event)" class="custom-control-input" id="organizacion">
+                  <label class="custom-control-label" for="organizacion">Organización</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                    <input type="checkbox" (change)="check5($event)" class="custom-control-input" id="analisis">
+                    <label class="custom-control-label" for="analisis">Análisis y procesamiento de información</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                  <input type="checkbox" (change)="check6($event)" class="custom-control-input" id="conocimientos">
+                  <label class="custom-control-label" for="conocimientos"> Conocimientos técnicos relacionados con el trabajo</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                    <input type="checkbox" (change)="check7($event)" class="custom-control-input" id="manejo">
+                    <label class="custom-control-label" for="manejo">Manejo de los programas de software</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                    <input type="checkbox" (change)="check8($event)" class="custom-control-input" id="edicion">
+                    <label class="custom-control-label" for="edicion">Edición y redacción de informes</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                    <input type="checkbox" (change)="check9($event)" class="custom-control-input" id="marketing">
+                    <label class="custom-control-label" for="marketing">Venta y marketing</label>
+                </div>
+      </div>
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" (click)="registrar()" data-dismiss="modal">Continuar y Registrar</button>
+        <button type="button" class="btn btn-primary" (click)="prueba()" data-dismiss="modal">Continuar y Registrar</button>
       </div>
     </div>
   </div>
@@ -26,61 +69,73 @@
          <div class="row">
               
                  <div class="col-md-4">
-                                <h2 class="login-header">Curriculum</h2>
-                                 <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()">
+          <h2 class="login-header">Curriculum</h2>
+            <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()">
 
-                                        <div class="form-group">
-                                                <label for="nombre">Empresa donde laboro</label>
-                                                <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.nombre.valid"></i>
-                                                <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.nombre.invalid &&
-                                                        empleadoForm.controls.nombre.touched"></i>
-                                                <input type="text" class="form-control" id="nombre"  placeholder="Nombre de la Empresa" formControlName="nombre">
-                                                
-                                                <p class="alert alert-danger" *ngIf="empleadoForm.controls.nombre.invalid &&
-                                                        empleadoForm.controls.nombre.touched">
-                                                        El campo del nombre de la Empresa es obligatorio</p>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="puesto">Puesto que desempeño</label>
-                                          <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.puesto.valid"></i>
-                                          <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.puesto.invalid &&
-                                                  empleadoForm.controls.puesto.touched"></i>
-                                          <input type="text" class="form-control" id="puesto"  placeholder="Puesto desempeñado en la empresa" formControlName="puesto">
-                                          
-                                          <p class="alert alert-danger" *ngIf="empleadoForm.controls.puesto.invalid &&
-                                                  empleadoForm.controls.puesto.touched">
-                                                  El puesto desempeñado en la empresa es obligatorio</p>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="date1">Fecha de inicio de laboración</label>
-                                          <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.date1.valid"></i>
-                                          <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.date1.invalid &&
-                                                  empleadoForm.controls.date1.touched"></i>
-                                          <input type="date" class="form-control" id="date1"  placeholder="AA/MM/DD" formControlName="date1">
-                                          
-                                          <p class="alert alert-danger" *ngIf="empleadoForm.controls.date1.invalid &&
-                                                  empleadoForm.controls.date1.touched">
-                                                  La fecha de inicio debe ser seleccionada</p>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="date2">Fecha de terminación de laboración</label>
-                                          <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.date2.valid"></i>
-                                          <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.date2.invalid &&
-                                                  empleadoForm.controls.date2.touched"></i>
-                                          <input type="date" class="form-control" id="date2" [(ngModel)]="date2" (change)="fijarfecha()" formControlName="date2">
-                                          
-                                          <p class="alert alert-danger" *ngIf="empleadoForm.controls.date2.invalid &&
-                                                  empleadoForm.controls.date2.touched">
-                                                  La fecha de terminación debe ser seleccionada</p>
-                                        </div>
-                                        
-                                </form>
-                                <button type="submit" class="btn btn-primary" (click)="agregar()" *ngIf="fijarfecha(); else desactivado">Agregar</button>
-                                <br>
-                                <br>
-                                        <ng-template #desactivado>
-                                          <button type="submit" class="btn btn-primary" disabled>Agregar a mi curriculum</button>
-                                        </ng-template>
+                  <div class="form-group">
+                          <label for="nombre">Empresa donde laboro</label>
+                          <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.nombre.valid"></i>
+                          <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.nombre.invalid &&
+                                  empleadoForm.controls.nombre.touched"></i>
+                          <input type="text" class="form-control" id="nombre"  placeholder="Nombre de la Empresa" formControlName="nombre">
+                          
+                          <p class="alert alert-danger" *ngIf="empleadoForm.controls.nombre.invalid &&
+                                  empleadoForm.controls.nombre.touched">
+                                  El campo del nombre de la Empresa es obligatorio</p>
+                  </div>
+                  <div class="form-group">
+                    <label for="puesto">Puesto que desempeño</label>
+                    <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.puesto.valid"></i>
+                    <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.puesto.invalid &&
+                            empleadoForm.controls.puesto.touched"></i>
+                    <input type="text" class="form-control" id="puesto"  placeholder="Puesto desempeñado en la empresa" formControlName="puesto">
+                    
+                    <p class="alert alert-danger" *ngIf="empleadoForm.controls.puesto.invalid &&
+                            empleadoForm.controls.puesto.touched">
+                            El puesto desempeñado en la empresa es obligatorio</p>
+                  </div>
+                  <div class="form-group">
+                    <label for="date1">Fecha de inicio de laboración</label>
+                    <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.date1.valid"></i>
+                    <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.date1.invalid &&
+                            empleadoForm.controls.date1.touched"></i>
+                    <input type="date" class="form-control" id="date1"  placeholder="AA/MM/DD" formControlName="date1">
+                    
+                    <p class="alert alert-danger" *ngIf="empleadoForm.controls.date1.invalid &&
+                            empleadoForm.controls.date1.touched">
+                            La fecha de inicio debe ser seleccionada</p>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="date2">Fecha de terminación de laboración</label>
+                    <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.date2.valid"></i>
+                    <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.date2.invalid &&
+                            empleadoForm.controls.date2.touched"></i>
+                    <input type="date" class="form-control" id="date2" [(ngModel)]="date2" (change)="fijarfecha()" formControlName="date2">
+                    
+                    <p class="alert alert-danger" *ngIf="empleadoForm.controls.date2.invalid &&
+                            empleadoForm.controls.date2.touched">
+                            La fecha de terminación debe ser seleccionada</p>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="descripcion">Descripción del cargo</label>
+                      <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.descripcion.valid"></i>
+                      <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.descripcion.invalid &&
+                              empleadoForm.controls.descripcion.touched"></i>
+                      <textarea class="form-control" id="descripcion" [(ngModel)]="descripcion" formControlName="descripcion"></textarea>
+                      <p class="alert alert-danger" *ngIf="empleadoForm.controls.descripcion.invalid &&
+                              empleadoForm.controls.descripcion.touched">
+                              Es obligatorio este campo</p>
+      </div>
+      
+      </form>
+      <button type="submit" class="btn btn-primary" (click)="agregar()" *ngIf="fijarfecha(); else desactivado">Agregar</button>
+      <br>
+      <br>
+            <ng-template #desactivado>
+              <button type="submit" class="btn btn-primary" disabled>Agregar a mi curriculum</button>
+            </ng-template>
                            
             </div>     
           

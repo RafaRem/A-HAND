@@ -25,7 +25,7 @@
   </div>
 
 
-<div class="row justify-content-md-center">
+<div id="inicio" class="row justify-content-md-center" (window:scroll)="Scroll($event)">
   <div class="col-md-9">
     <div *ngFor="let ress of res">
       <br>
@@ -36,16 +36,79 @@
            Vacante disponible en: {{ress.puesto}}
         </div>
         <div class="card-body">
-          <h5 class="card-title">Nombre de la Empresa: {{ress.nombre}}</h5>
+
+              
+          <h5 class="card-title"><div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/empresa.png" alt=""></div> Nombre de la Empresa: {{ress.nombre}}</h5>
           <div class="row justify-content-md-center"></div>
-          <p class="card-text">Puesto: {{ress.puesto}} <br>
-            Experiencia minima en años: {{ress.experiencia}} <br>
-            Edad Requerida: {{ress.edad}} <br>
-            Escolaridad: {{ress.esc}} <br>
-            Sexo: {{ress.sexo}} <br>
-            Salario: {{ress.salario}} <br>
-            Ofrece Seguro: {{ress.seguro}} <br>
-          </p>
+          <div class="row justify-content-md-center">
+              <div class="col-md-6"><div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default"><div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/puesto.png" alt=""></div>PUESTO</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ress.puesto}}" disabled>
+                </div>
+              </div>
+          </div>
+          <div class="row justify-content-md-center">
+            <div class="col-md-6"><div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"><div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/experiencia.png" alt=""></div>  EXPERIENCIA MINIMA</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ress.experiencia}}" disabled>
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">AÑOS</span>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-6"><div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"><div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/edad.png" alt=""></div>EDAD SOLICITADA</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ress.edad}}" disabled>
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">AÑOS</span>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-6"><div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"><div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/esc.png" alt=""></div> ESCOLARIDAD</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ress.esc}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-6"><div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"><div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/sexo.png" alt=""></div>SEXO</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ress.sexo}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-6"><div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"><div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/salario.png" alt=""></div>SALARIO</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ress.salario}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-6"><div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"><div><img  style="width: 25px; height: 25px;"  src="../../../assets/img/seguro.png" alt="">CUBRE SEGURO  </div> </span>
+              </div>
+              <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ress.seguro}}" disabled>
+            </div>
+          </div>
+        </div>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="detalle(ress.correo, ress.nombre, ress.puesto)">
               Enviar Solicitud
             </button>

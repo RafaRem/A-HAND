@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProveedoresService } from 'src/app/servicios/proveedores.service';
-import { Injectable } from '@angular/core';
-import { firebase } from '@firebase/app';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import '@firebase/firestore';
-import { ParseError } from '@angular/compiler';
-import { isUndefined } from 'util';
 import { FribaseinicializarService } from 'src/app/servicios/fribaseinicializar.service';
 
 @Component({

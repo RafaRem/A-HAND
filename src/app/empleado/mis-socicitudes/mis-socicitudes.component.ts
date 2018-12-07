@@ -38,7 +38,7 @@ vac;
     query.get().then(querySnap => {
      querySnap.forEach(element => {
       this.vacan = element.data();
-      if((this.vacan.estatus == "activo")||(this.vacan.estatus == "pendiente")){
+      if((this.vacan.estatus == "activo")||(this.vacan.estatus == "pendiente")||(this.vacan.estatus == "rechazado")||(this.vacan.estatus == "aceptado")){
         this.curri[this.cont] = element.data();
         //console.log(element.data());
         console.log(this.curri[this.cont]);
@@ -70,7 +70,8 @@ vac;
               
   
               this.db.collection('soli').doc(this.correo).collection('solicitudes').doc(element.id).set({
-                estatus : 'eliminado'
+                estatus : 'eliminado',
+                status: 'cancelado'
                 
               }, { merge: true })
               

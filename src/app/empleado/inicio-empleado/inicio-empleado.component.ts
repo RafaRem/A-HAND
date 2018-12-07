@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ProveedoresService } from 'src/app/servicios/proveedores.service';
 import { FribaseinicializarService } from 'src/app/servicios/fribaseinicializar.service';
 import { forEach } from '@angular/router/src/utils/collection';
@@ -14,6 +14,9 @@ export class InicioEmpleadoComponent implements OnInit {
   auth;
   proveedores: any;
   token;
+  puntero = 7;
+  elemento;
+  docum;
   correo;
   empresacorreo;
   empresanombre;
@@ -22,6 +25,7 @@ export class InicioEmpleadoComponent implements OnInit {
   puesto;
   data;
   checkuser;
+  cont: number = 0;
   ext: boolean = false;
   constructor(private servicio: ProveedoresService) {
     if (!FribaseinicializarService.auth || !FribaseinicializarService.db){
@@ -31,9 +35,34 @@ export class InicioEmpleadoComponent implements OnInit {
     this.auth = FribaseinicializarService.auth;
     this.correo = localStorage.getItem('correo');
     console.log(this.correo)
+  }
+
+  Scroll(event){
+    const top = this.elemento.pageYOffset;
   
-    this.servicio.vacantes() }
+    const height =  this.docum.offsetHeight;
   
+    if (top > height - 780) {
+      console.log('Entro');
+      this.actualizarServicios(top, height);
+    }
+  }
+  actualizarServicios(top, height) {
+    const db = this.servicio.db;
+    const self = this;
+    db.collection('vacantes')
+    .limit(this.puntero + 7)
+    .get().then(querySnap => {
+      self.res = [];
+      querySnap.forEach(element => {
+        const documento = element.data();
+        documento.id = element.id;
+        self.res.push(documento);
+        self.puntero += 1;
+      });
+    
+    });
+  }
   prueba(){
     this.res = this.servicio.dato;
     
@@ -47,6 +76,7 @@ export class InicioEmpleadoComponent implements OnInit {
      empresa: this.empresanombre,
      nompresa: this.empresacorreo,
      estatus: 'activo',
+     status: 'enviado'
     }
     console.log(varsev);
     return varsev;
@@ -104,8 +134,40 @@ export class InicioEmpleadoComponent implements OnInit {
     this.perfil(this.correo);
   }
   ngOnInit() {
-    this.res = this.servicio.dato;
-    this.proveedores= this.servicio.getProveedores();
+    this.getServicios();
+    this.elemento = window;
+    this.docum = document.getElementById('inicio');
   }
+  getServicios() {
+    const db = this.servicio.db;
+    const self = this;
+    let prim = false;
+    db.collection('vacantes')
+    .limit(this.puntero)
+    .get().then(querySnap => {
+      db.collection('vacantes')
+      .limit(1)
+      .onSnapshot(querySnap => {
+        if (prim) {
+          querySnap.forEach(element => {
+            const documento = element.data();
+            documento.id = element.id;
+            self.res.push(documento);
+            self.puntero += 1;
+          });
+        } else {
+          prim = true;
+        }
+      });
+      querySnap.forEach(element => {
+        const documento = element.data();
+        documento.id = element.id;
+        self.res.push(documento);
+      });
+    });
+  }
+
+
+  
 
 }

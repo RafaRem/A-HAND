@@ -1,6 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, } from '@angular/platform-browser';
+import {BrowserAnimationsModule,  } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { HttpModule} from '@angular/http';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import {ReactiveFormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -84,11 +88,16 @@ const routes: Routes= [
 
   ],
   imports: [
+   
     BrowserModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    MatInputModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

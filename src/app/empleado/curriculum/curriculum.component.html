@@ -57,7 +57,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" (click)="prueba()" data-dismiss="modal">Continuar y Registrar</button>
+        <button type="button" class="btn btn-primary" (click)="registrar()" data-dismiss="modal">Continuar y Registrar</button>
       </div>
     </div>
   </div>
@@ -123,7 +123,7 @@
                       <i class="fa fa-check-circle check" *ngIf="empleadoForm.controls.descripcion.valid"></i>
                       <i class="fa fa-exclamation-circle uncheck" *ngIf="empleadoForm.controls.descripcion.invalid &&
                               empleadoForm.controls.descripcion.touched"></i>
-                      <textarea class="form-control" id="descripcion" [(ngModel)]="descripcion" formControlName="descripcion"></textarea>
+                      <textarea class="form-control" id="descripcion" formControlName="descripcion"></textarea>
                       <p class="alert alert-danger" *ngIf="empleadoForm.controls.descripcion.invalid &&
                               empleadoForm.controls.descripcion.touched">
                               Es obligatorio este campo</p>

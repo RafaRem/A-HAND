@@ -116,75 +116,6 @@ export class AltavacanteComponent implements OnInit {
       
     prueba(){
      
-      const query = this.db.collection('curriculum').doc('REQE970126HJCMND02').collection('curriculum'); 
-      query.get().then(querySnap => {
-      querySnap.forEach(element => {
-      this.curri = element.data();
-      alert('entro primero a contar')
-        if((this.curri.equipo  == 1) && (this.curri.equipo == this.datos.equipo)){
-          this.puntos  = this.puntos +1;
-          console.log(this.puntos);
-        }
-        if((this.curri.resproblemas== 1) && (this.curri.resproblemas == this.datos.resproblemas)){
-          this.puntos  = this.puntos +1;
-          console.log(this.puntos);
-        } 
-        if((this.curri.comunicacion == 1) && (this.curri.comunicacion == this.datos.comunicacion)){
-          this.puntos  = this.puntos +1;
-          console.log(this.puntos);
-        } 
-        if((this.curri.organizacion== 1) && (this.curri.resproblemas == this.datos.organizacion)){
-          this.puntos  = this.puntos +1;
-          console.log(this.puntos);
-        }
-        if((this.curri.analisis== 1) && (this.curri.analisis == this.datos.analisis)){
-          this.puntos  = this.puntos +1;
-          console.log(this.puntos);
-        }  
-        if((this.curri.conocimientos== 1) && (this.curri.conocimientos == this.datos.conocimientos)){
-          this.puntos  = this.puntos +1;
-          console.log(this.puntos);
-        } 
-        if((this.curri.manejo== 1) && (this.curri.manejo == this.datos.manejo)){
-          this.puntos  = this.puntos +1;
-          console.log(this.puntos);
-        } 
-        if((this.curri.edicion== 1) && (this.curri.edicion == this.datos.edicion)){
-          this.puntos  = this.puntos +1;
-          console.log(this.puntos);
-        } 
-        if((this.curri.marketing== 1) && (this.curri.resproblemas == this.datos.marketing)){
-          this.puntos  = this.puntos +1;
-          console.log(this.puntos);
-          
-        } 
-      
-  });
-  if(this.puntos >= this.conth){
-    alert('entro primero a registrar')
-    console.log("si exiten sugerencias")
-      const svu = {
-        nombre: "Edgar Rafael Rembao Quintero",
-        edad: this.edad,
-        sexo: this.sexo,
-        gestudio: this.gradoe,
-        puesto: this.vacante.puesto,
-        correo: "edgarembao@hotmail.com",
-        estatus: "activo",
-      }
-    
-
-        this.db.collection('sujerencias').doc(this.usuario).collection('sujerencias').add(svu)
-        .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-          })
-        .catch(function(error) {
-          console.error("Error adding document: ", error);
-          });
-
-      console.log('ya creo la sujerencia');
-  }
-});
 
     
       }
@@ -202,7 +133,7 @@ export class AltavacanteComponent implements OnInit {
         seguro: this.vacanteForm.get('seguro').value,
         nombre: this.profiles.nombre, 
         correo: this.usuario,      
-        trabajo: this.datos.equipo,
+        equipo: this.datos.equipo,
         resproblemas: this.datos.resproblemas,
         comunicacion: this.datos.comunicacion,
         organizacion: this.datos.organizacion,
@@ -250,16 +181,17 @@ export class AltavacanteComponent implements OnInit {
     }
     
     checar(){
-      console.log(this.vacante.edad.substring(0,2))
-      console.log(this.vacante.edad.substring(3,5))
-    
+     
+      console.log("los puntos a alcanzar son");
+      console.log(this.conth);
       for(var i = 0;i<this.sujerencias.length;i++){
         const element = this.sujerencias[i];
         const curp = element.curp
+        
         console.log('es la curp')
         console.log(curp)
         this.puntos = 0;
-          console.log("si entra")
+        
           if((this.vacante.esc == element.gestudio ) || (element.gestudio == "Licenciatura" )|| (element.gestudio == "Doctorado" ) || (element.gestudio == "Maestria" )){
             this.puntos = this.puntos + 1;
             this.gradoe = "SI";
@@ -283,74 +215,73 @@ export class AltavacanteComponent implements OnInit {
 
           //--------------------------------------------------------------------------------------
          
-          alert('entro primero a contar')
-            if((this.curri.equipo  == 1) && (this.curri.equipo == this.datos.equipo)){
-              this.puntos  = this.puntos +1;
-              console.log(this.puntos);
-            }
-            if((this.curri.resproblemas== 1) && (this.curri.resproblemas == this.datos.resproblemas)){
-              this.puntos  = this.puntos +1;
-              console.log(this.puntos);
-            } 
-            if((this.curri.comunicacion == 1) && (this.curri.comunicacion == this.datos.comunicacion)){
-              this.puntos  = this.puntos +1;
-              console.log(this.puntos);
-            } 
-            if((this.curri.organizacion== 1) && (this.curri.resproblemas == this.datos.organizacion)){
-              this.puntos  = this.puntos +1;
-              console.log(this.puntos);
-            }
-            if((this.curri.analisis== 1) && (this.curri.analisis == this.datos.analisis)){
-              this.puntos  = this.puntos +1;
-              console.log(this.puntos);
-            }  
-            if((this.curri.conocimientos== 1) && (this.curri.conocimientos == this.datos.conocimientos)){
-              this.puntos  = this.puntos +1;
-              console.log(this.puntos);
-            } 
-            if((this.curri.manejo== 1) && (this.curri.manejo == this.datos.manejo)){
-              this.puntos  = this.puntos +1;
-              console.log(this.puntos);
-            } 
-            if((this.curri.edicion== 1) && (this.curri.edicion == this.datos.edicion)){
-              this.puntos  = this.puntos +1;
-              console.log(this.puntos);
-            } 
-            if((this.curri.marketing== 1) && (this.curri.resproblemas == this.datos.marketing)){
-              this.puntos  = this.puntos +1;
-              console.log(this.puntos);
-              
-            } 
-          
-    
-              if(this.puntos >= this.conth){
-              alert('entro primero a registrar')
-              console.log("si exiten sugerencias")
-              const svu = {
-              nombre: element.nombre +" "+ element.app +" "+element.apm,
-              edad: this.edad,
-              sexo: this.sexo,
-              gestudio: this.gradoe,
-              puesto: this.vacante.puesto,
-              correo: element.correo,
-              estatus: "activo",
-            }
         
+          if((this.vacante.equipo  == 1) && (element.equipo == this.datos.equipo)){
+            this.puntos  = this.puntos +1;
+            console.log(this.puntos);
+          }
+          if((this.vacante.resproblemas== 1) && (element.resproblemas == this.datos.resproblemas)){
+            this.puntos  = this.puntos +1;
+            console.log(this.puntos);
+          } 
+          if((this.vacante.comunicacion == 1) && (element.comunicacion == this.datos.comunicacion)){
+            this.puntos  = this.puntos +1;
+            console.log(this.puntos);
+          } 
+          if((this.vacante.organizacion== 1) && (element.resproblemas == this.datos.organizacion)){
+            this.puntos  = this.puntos +1;
+            console.log(this.puntos);
+          }
+          if((this.vacante.analisis== 1) && (element.analisis == this.datos.analisis)){
+            this.puntos  = this.puntos +1;
+            console.log(this.puntos);
+          }  
+          if((this.vacante.conocimientos== 1) && (element.conocimientos == this.datos.conocimientos)){
+            this.puntos  = this.puntos +1;
+            console.log(this.puntos);
+          } 
+          if((this.vacante.manejo== 1) && (element.manejo == this.datos.manejo)){
+            this.puntos  = this.puntos +1;
+            console.log(this.puntos);
+          } 
+          if((this.vacante.edicion== 1) && (element.edicion == this.datos.edicion)){
+            this.puntos  = this.puntos +1;
+            console.log(this.puntos);
+          } 
+          if((this.vacante.marketing== 1) && (element.resproblemas == this.datos.marketing)){
+            this.puntos  = this.puntos +1;
+            console.log(this.puntos);
+            
+          } 
+        
+          const porcentaje = (this.puntos * 100)/ this.conth
 
-            this.db.collection('sujerencias').doc(this.usuario).collection('sujerencias').add(svu)
-            .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-              })
-            .catch(function(error) {
-              console.error("Error adding document: ", error);
-              });
+          if(porcentaje >= 85){
+          alert('entro primero a registrar')
+          console.log("si exiten sugerencias")
+          const svu = {
+          nombre: element.nombre +" "+ element.app +" "+element.apm,
+          edad: this.edad,
+          sexo: this.sexo,
+          gestudio: this.gradoe,
+          puesto: this.vacante.puesto,
+          correo: element.correo,
+          estatus: "activo",
+          porcentaje: porcentaje
+        }
+      
 
-          console.log('ya creo la sujerencia');
-      }
- 
-          //--------------------------------------------------------------------------------------
-          
-         
+          this.db.collection('sujerencias').doc(this.usuario).collection('sujerencias').add(svu)
+          .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+            })
+          .catch(function(error) {
+            console.error("Error adding document: ", error);
+            });
+
+        console.log('ya creo la sujerencia');
+    }
+          //--------------------------------------------------------------------------------------    
           console.log(this.puntos);
       };
     }

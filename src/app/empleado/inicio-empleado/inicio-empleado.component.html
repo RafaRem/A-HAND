@@ -24,7 +24,14 @@
     </div>
   </div>
 
-
+ <!-- <form class="form-inline my-2 my-lg-0  row justify-content-md-center" >
+    <div class="col-md-3" style="background:  #06093D">
+      <div class=" row justify-content-md-center">
+			<input class="form-control mr-sm-2" type="search"  [(ngModel)]="buscar" name="buscar" placeholder="Buscar puesto" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" (click)="buscarpuesto()" type="submit">Buscar</button>
+    </div>
+    </div>
+    </form>-->
 <div id="inicio" class="row justify-content-md-center" (window:scroll)="Scroll($event)">
   <div class="col-md-9">
     <div *ngFor="let ress of res">

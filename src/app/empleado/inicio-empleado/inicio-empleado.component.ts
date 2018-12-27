@@ -12,6 +12,8 @@ export class InicioEmpleadoComponent implements OnInit {
   res = [];
   db;
   auth;
+  buscar;
+  bus;
   proveedores: any;
   token;
   puntero = 7;
@@ -66,6 +68,27 @@ export class InicioEmpleadoComponent implements OnInit {
   prueba(){
     this.res = this.servicio.dato;
     
+  }
+
+  buscarpuesto(){
+    this.buscar = this.buscar.toUpperCase()
+    console.log(this.buscar);
+    this.res.splice(0, this.res.length);
+    const query = this.db.collection('vacantes'); 
+     query.get().then(querySnap => {
+      querySnap.forEach(element => {
+          this.bus = element.data();
+        if (this.bus.puesto == this.buscar ){
+          this.res = this.bus 
+          alert(this.res);
+         
+        }
+    } );
+  }); 
+    
+
+    
+
   }
 
   saveSolicitud(){

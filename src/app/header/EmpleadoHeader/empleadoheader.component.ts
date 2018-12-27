@@ -48,7 +48,7 @@ correo;
 
   ngOnInit() {
    
-    console.log(this.correo)
+
     window.setInterval(()=>{
     const query = this.db.collection('soli').doc(this.correo).collection('solicitudes'); 
 
@@ -56,13 +56,12 @@ correo;
         querySnap.forEach(element => {
           
           this.estatus = element.data();
-          console.log(this.estatus.status);
+     
           
           if ((this.estatus.status == 'rechazado') || (this.estatus.estatus == 'aceptado')){
             
             this.curri.push(this.estatus);
-            console.log("es el dato")
-            console.log(this.curri)
+        
             this.db.collection('soli').doc(this.correo).collection('solicitudes').doc(element.id).set({
               estatus : 'pendiente'
             }, { merge: true });

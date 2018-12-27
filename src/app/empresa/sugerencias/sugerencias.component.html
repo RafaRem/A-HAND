@@ -121,8 +121,9 @@
         <th>Edad</th>
         <th>Grado de estudio</th>
         <th>Sexo</th>
+        <th>Compatibilidad</th>
         <th>Correo de Contacto</th>
-        <th>Eliminar Vacante</th>
+        <th>Rechazar Vacante</th>
         <th>Ver detalles</th>
       </tr>
     </thead>
@@ -133,9 +134,10 @@
         <td>{{ vacante.edad }}</td>
         <td>{{vacante.gestudio}}</td>
         <td>{{ vacante.sexo }}</td>
+        <td>{{vacante.porcentaje}}%</td>
         <td>{{vacante.correo}}</td>
         <td >	
-          <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" (click)="pasarcorreo(vacante.nombre, vacante.correo)"> Eliminar </button></td>
+          <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" (click)="pasarcorreo(vacante.nombre, vacante.correo)"> Rechazar </button></td>
         <td><button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target=".bd-example-modal-lg" ><a class="button" (click)="detalles(vacante)" >Detalles del trabajador</a></button>
           </td>
       </tr>

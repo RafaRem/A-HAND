@@ -28,11 +28,12 @@ curri=[];
     }
 
     misSolicitudes(correo){
+      this.cont = 0
       const query = this.db.collection('solicitudes').doc(correo).collection('solicitudes').where("estatus", "==", "pendiente"); 
       query.limit(5).get().then(querySnap => {
         querySnap.forEach(element => {
-         this.curri[this.cont] = element.data();
-         //console.log(element.data());
+         this.curri.push(element.data());
+         console.log(element.data());
          console.log(this.curri[this.cont]);
          this.cont = this.cont + 1;
         });

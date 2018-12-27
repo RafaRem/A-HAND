@@ -1,5 +1,26 @@
 <app-empresaheader></app-empresaheader>
 
+<div class="modal fade" id="Modalaceptar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style=" background: green !important; color: white">
+          <h5 class="modal-title" id="exampleModalLabel">Aviso</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Usted va a Aceptar la solicitud del usuario {{nombre}}, con correo {{empleado}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="aceptar()" data-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -109,6 +130,24 @@
 <div class="row justify-content-md-center">
 <div class="col-xs-12 col-sm-10 col-md-9 col-sm-offset-1 col-md-offset 2">
 <h2>Solicitudes de empleo</h2>
+
+<div class="form-group">
+    <label for="opcion"><h3>Mostrar</h3> </label>
+    <br>
+    <div class="custom-control custom-radio">
+        <input type="radio" id="pendiente" name="customRadio" (change)="checkp($event)" value="pendiente" class="custom-control-input">
+        <label class="custom-control-label" for="pendiente">Pendiente</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="rechazado" name="customRadio" (change)="checkr($event)" value="rechazado" class="custom-control-input">
+        <label class="custom-control-label" for="rechazado">Rechazado</label>
+      </div>
+      <div class="custom-control custom-radio">
+          <input type="radio" id="aceptado" name="customRadio" (change)="checka($event)" value="rechazado" class="custom-control-input">
+          <label class="custom-control-label" for="aceptado">Aceptados</label>
+      </div>
+</div> 
+
 <div class="table-responsive">
 <table class="table table-bordered table-striped tabla" style="margin-top: 40px;" >
   <thead>
@@ -119,8 +158,9 @@
       <th>Correo Electronico</th>
      
       <th>Agendar Cita</th>
+      <th>Mandar whatsaap</th>
       <th>Ver Perfil</th>
-      <th>Eliminar vacante</th>
+      <th>Rechazar vacante</th>
     </tr>
   </thead>
   <tbody>
@@ -128,16 +168,18 @@
       <td>{{proveedor.nombre}}</td>
       <td>{{proveedor.puesto}}</td>
  
-      <td><a href="mailto:{{ proveedor.correo }}">{{ proveedor.correo}}</a></td>
+      <td><a href="mailto:{{ proveedor.correo }}?Subject={{proveedor.nombre}}&body={{mensaje}}">{{ proveedor.correo}}</a></td>
      
       <td>	<!---outline- para hacer trasparente el boton-->
-          <a href="mailto:{{ proveedor.correo }}"><button class="btn btn-warning my-2 my-sm-0" type="submit">Agendar</button></a> 
+          <button class="btn btn-secundary my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#Modalaceptar"  (click)="pasarcorreo(proveedor.nombre, proveedor.correo)">Aceptar</button>
       </td>
+      <td> <button (click)="whatsapp(proveedor.correo)" class="btn btn-success"> whatsaap </button></td>
+      
       <td>	
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="detalles(proveedor)">Ver Curriculum</button>
       </td>
       <td>	<!---outline- para hacer trasparente el boton-->
-   <button class="btn btn-danger my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" (click)="pasarcorreo(proveedor.nombre, proveedor.correo)" >Eliminar vacante</button>
+   <button class="btn btn-danger my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal"  (click)="pasarcorreo(proveedor.nombre, proveedor.correo)" >Rechazar vacante</button>
     </td>
     </tr>
   </tbody>

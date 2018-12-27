@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { ProveedoresService } from 'src/app/servicios/proveedores.service';
 import { CrudusuariosService } from 'src/app/servicios/crudusuarios.service';
 import { Router } from '@angular/router';
+import { CodigosService } from 'src/app/servicios/codigos.service';
 @Component({
   selector: 'app-registrar-empresa',
   templateUrl: './registrar-empresa.component.html',
@@ -18,8 +19,10 @@ export class RegistrarEmpresaComponent implements OnInit {
   cpassword: string;
   resul: boolean = true;
   estado;
+  municipio;
+  codigopostal: any;
   categoria: string[]= ["dato1", "dato2", "dato3"];
-
+  cp;
   ligas: {
     nombre: "Tres Garantias",
       torneo:[{
@@ -37,7 +40,9 @@ export class RegistrarEmpresaComponent implements OnInit {
   'Hidalgo','Morelos']
   valor: boolean;
 
-  constructor(private pf: FormBuilder,private router: Router, private servicio: ProveedoresService, private serviciolog: CrudusuariosService) { }
+  constructor(private pf: FormBuilder,private router: Router, private servicio: ProveedoresService, private serviciolog: CrudusuariosService, private codigo: CodigosService) {
+    this.codigopostal =  this.codigo.getcp();
+   }
 
   ngOnInit() {
 
@@ -55,6 +60,7 @@ export class RegistrarEmpresaComponent implements OnInit {
       calle:['', Validators.required],
       numext:['', Validators.required],
       numint:['', Validators.required],
+      cp: ['', Validators.required],
     
     });
 
@@ -121,6 +127,20 @@ export class RegistrarEmpresaComponent implements OnInit {
     this.router.navigateByUrl("login");
   }
 
+  getcodigo(){
+    const cpval = this.empresaForm.get('cp').value;
+    
+   if (cpval.length == 5){
+    this.codigopostal.forEach(element => {
+      if (element.cp == cpval){
+          this.estado = element.estado;
+          this.municipio = element.municipio;
+      }
+      
+    });
+   }
+
+  }
   onSubmit(){
     
     this.empresa = this.saveEmpleado();

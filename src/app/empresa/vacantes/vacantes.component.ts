@@ -41,6 +41,12 @@ export class VacantesComponent implements OnInit {
     }
     return savePresupuesto;
   }
+
+  check(values:any){
+    console.log(values.currentTarget.checked);
+    
+  }
+
   ngOnInit() {
     
   }

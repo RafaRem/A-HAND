@@ -58,7 +58,7 @@
           <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.rfc.valid"></i>
           <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.rfc.invalid &&
                   empresaForm.controls.rfc.touched"></i>
-          <input type="text" class="form-control" id="rfc" placeholder="MECH970126JD1" formControlName="rfc">
+          <input type="text" class="form-control" id="rfc" pattern="([A-Z]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])([A-Z]{2})([0-9]{1}))" placeholder="MECH970126JD1" formControlName="rfc">
           <p class="alert alert-danger" *ngIf="empresaForm.controls.rfc.invalid &&
                   empresaForm.controls.rfc.touched">
                 El campo RFC es obligatorio</p>
@@ -88,7 +88,7 @@
           <div class="form-group">
               <label for="descripcion">Descripcion de la empresa</label>
   
-             <textarea rows="14" ng-model="descripcion" name="descripcion" id="descripcion" formControlName="descripcion" placeholder="Breve explicación de la empresa" class="form-control"></textarea>
+             <textarea rows="14"  name="descripcion" id="descripcion" formControlName="descripcion" placeholder="Breve explicación de la empresa" class="form-control"></textarea>
            
             </div>
 
@@ -99,6 +99,16 @@
                     <h3>Diereccion de la Empresa</h3>
                     <br>
                     <br>
+                    <div class="form-group">
+                                <label for="cp">Codigo Postal*</label>
+                                <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.cp.valid"></i>
+                                <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.cp.invalid &&
+                                        empresaForm.controls.cp.touched"></i>
+                                <input type="text" class="form-control" id="cp" (input)="getcodigo()" [(ngModel)]="cp" placeholder="cp" formControlName="cp">
+                                <p class="alert alert-danger" *ngIf="empresaForm.controls.cp.invalid &&empresaForm.controls.cp.touched">
+                                El codigo postal</p>
+                        </div>
+              
                   
                     <div class="form-group">
                         <!--estado-->
@@ -116,7 +126,7 @@
                         <i class="fa fa-check-circle check" *ngIf="empresaForm.controls.municipio.valid"></i>
                         <i class="fa fa-exclamation-circle uncheck" *ngIf="empresaForm.controls.municipio.invalid &&
                                 empresaForm.controls.municipio.touched"></i>
-                        <input type="text" class="form-control" id="municipio" placeholder="Municipio" formControlName="municipio">
+                        <input type="text" class="form-control" id="municipio" [(ngModel)]="municipio" placeholder="Municipio" formControlName="municipio">
                         <p class="alert alert-danger" *ngIf="empresaForm.controls.municipio.invalid &&empresaForm.controls.municipio.touched">
                         El campo del Municipio es obligatorio</p>
                 </div>
